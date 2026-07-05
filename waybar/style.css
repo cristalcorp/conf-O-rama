@@ -21,6 +21,19 @@
 @define-color iconcolor #FFFFFF;
 
 /* -----------------------------------------------------
+ * Rainbow effect
+ * ----------------------------------------------------- */
+#custom-appmenu,
+#clock,
+#bluetooth,
+#pulseaudio,
+#network,
+#workspaces button.active,
+#window {
+    animation: rainbow 6000s linear infinite, rainbow-bg 5500s linear infinite;
+    background-color: transparent; /* laisse l'animation prendre le dessus */
+}
+/* -----------------------------------------------------
  * General 
  * ----------------------------------------------------- */
 
@@ -28,14 +41,35 @@
     font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     border: none;
     border-radius: 0px;
+    animation: rainbow 6000s linear infinite;
+}
+
+@keyframes rainbow {
+  0%   { color: #ff6b6b; }
+  14%  { color: #ffb347; }
+  28%  { color: #ffff66; }
+  42%  { color: #90ee90; }
+  57%  { color: #87ceeb; }
+  71%  { color: #9b7fe8; }
+  85%  { color: #ff69b4; }
+  100% { color: #ff6b6b; }
+}
+
+@keyframes rainbow-bg {
+  0%   { background-color: #6bffff; }
+  14%  { background-color: #4781ff; }
+  28%  { background-color: #6600ff; }
+  42%  { background-color: #ee6b90; }
+  57%  { background-color: #eb8743; }
+  71%  { background-color: #68b73a; }
+  85%  { background-color: #699647; }
+  100% { background-color: #6bffff; }
 }
 
 window#waybar {
-    background-color: rgba(0,0,0,0.2);
-    border-bottom: 0px solid #ffffff;
-    /* color: #FFFFFF; */
-    transition-property: background-color;
-    transition-duration: .5s;
+    background-color: transparent;
+    /* transition-property: background-color; */
+    /* transition-duration: .5s; */
 }
 
 /* -----------------------------------------------------
@@ -110,6 +144,7 @@ window#waybar.empty #window {
     background-color:transparent;
 }
 
+
 /* -----------------------------------------------------
  * Taskbar
  * ----------------------------------------------------- */
@@ -148,6 +183,7 @@ window#waybar.empty #window {
 
 #custom-browser, 
 #custom-filemanager,
+#bluetooth,
 #network,
 #pulseaudio,
 #battery,
@@ -174,9 +210,8 @@ window#waybar.empty #window {
     padding:0px;
     margin-right: 7px;
     font-size:20px;
-    color: @iconcolor;
+    /* color: @iconcolor; */
 }
-
 /* -----------------------------------------------------
  * Custom Modules
  * ----------------------------------------------------- */
@@ -203,7 +238,7 @@ window#waybar.empty #window {
  * Hardware Group
  * ----------------------------------------------------- */
 
- #disk,#memory,#cpu,#language {
+ #disk,#memory,#cpu,#language,#custom-gpu {
     margin:0px;
     padding:0px;
     font-size:16px;
