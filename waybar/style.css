@@ -30,7 +30,7 @@
 #network,
 #workspaces button.active,
 #window {
-    animation: rainbow 6000s linear infinite, rainbow-bg 5500s linear infinite;
+    animation: rainbow 6000s linear infinite, rainbow-bg 6000s linear infinite;
     background-color: transparent; /* laisse l'animation prendre le dessus */
 }
 /* -----------------------------------------------------
@@ -56,14 +56,14 @@
 }
 
 @keyframes rainbow-bg {
-  0%   { background-color: #6bffff; }
-  14%  { background-color: #4781ff; }
-  28%  { background-color: #6600ff; }
-  42%  { background-color: #ee6b90; }
-  57%  { background-color: #eb8743; }
-  71%  { background-color: #68b73a; }
-  85%  { background-color: #699647; }
-  100% { background-color: #6bffff; }
+  0%   { background-color: #062626; }
+  14%  { background-color: #1a2a5e; }
+  28%  { background-color: #2e1065; }
+  42%  { background-color: #4a1040; }
+  57%  { background-color: #4a2a10; }
+  71%  { background-color: #0f1f08; }
+  85%  { background-color: #0a2a14; }
+  100% { background-color: #062626; }
 }
 
 window#waybar {
