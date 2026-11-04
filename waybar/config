@@ -12,7 +12,12 @@
 
     // "mode" : "hide",
     // "start_hidden": true,
-    // "exclusive": true,
+    // OLED idle hide: Hyprland reserves the top strip (reserved_area in hyprland.lua),
+    // so the bar never resizes windows nor overlaps them. hypridle sends the signals.
+    "exclusive": false,
+    "margin-top": -46,       // sit inside the strip Hyprland reserves
+    "on-sigusr1": "hide",
+    "on-sigusr2": "show",
 
     // Load Modules
     "include": [
