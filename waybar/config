@@ -16,7 +16,7 @@
     // so the bar never resizes windows nor overlaps them. hypridle sends the signals.
     "exclusive": false,
     "reload_style_on_change": true,   // reload ~/.cache/waybar/style.css when bar-color.sh rewrites it
-    "margin-top": -46,       // sit inside the strip Hyprland reserves
+    "margin-top": -38,       // sit inside the strip Hyprland reserves
     "on-sigusr1": "hide",
     "on-sigusr2": "show",
 
