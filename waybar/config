@@ -24,7 +24,7 @@
         "~/.config/ml4w/settings/waybar-quicklinks.json",
         "~/.config/waybar/modules.json"
     ],    
-    "modules-left": [
+    "modules-center": [   // centered on the 32:9 G93SD (was modules-left)
         "hyprland/workspaces",
         "hyprland/window"
     ],
