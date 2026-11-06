@@ -10,6 +10,9 @@
  * ----------------------------------------------------- 
 */
 
+@define-color bar_fg #ff6b6b;   /* default pair; rewritten at each show by scripts/bar-color.sh */
+@define-color bar_bg #062626;
+
 @define-color backgroundlight #FFFFFF;
 @define-color backgrounddark #FFFFFF;
 @define-color workspacesbackground1 #FFFFFF;
@@ -21,19 +24,6 @@
 @define-color iconcolor #FFFFFF;
 
 /* -----------------------------------------------------
- * Rainbow effect
- * ----------------------------------------------------- */
-#custom-appmenu,
-#clock,
-#bluetooth,
-#pulseaudio,
-#network,
-#workspaces button.active,
-#window {
-    animation: rainbow 6000s linear infinite, rainbow-bg 6000s linear infinite;
-    background-color: transparent; /* laisse l'animation prendre le dessus */
-}
-/* -----------------------------------------------------
  * General 
  * ----------------------------------------------------- */
 
@@ -41,29 +31,6 @@
     font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     border: none;
     border-radius: 0px;
-    animation: rainbow 6000s linear infinite;
-}
-
-@keyframes rainbow {
-  0%   { color: #ff6b6b; }
-  14%  { color: #ffb347; }
-  28%  { color: #ffff66; }
-  42%  { color: #90ee90; }
-  57%  { color: #87ceeb; }
-  71%  { color: #9b7fe8; }
-  85%  { color: #ff69b4; }
-  100% { color: #ff6b6b; }
-}
-
-@keyframes rainbow-bg {
-  0%   { background-color: #062626; }
-  14%  { background-color: #1a2a5e; }
-  28%  { background-color: #2e1065; }
-  42%  { background-color: #4a1040; }
-  57%  { background-color: #4a2a10; }
-  71%  { background-color: #0f1f08; }
-  85%  { background-color: #0a2a14; }
-  100% { background-color: #062626; }
 }
 
 window#waybar {
@@ -389,3 +356,34 @@ label:focus {
     background-color: #f53c3c;
 }
 
+
+/* -----------------------------------------------------
+ * Bar colors: one contrast-checked pair (WCAG 5.4 to 14.3), picked at random
+ * each time the bar shows (scripts/bar-color.sh). Last in the file so it wins.
+ * No CSS animation: an endless one redraws the bar every frame
+ * (24 % CPU, GPU kept awake at 240 Hz).
+ * ----------------------------------------------------- */
+
+* {
+    color: @bar_fg;
+}
+
+#workspaces, #workspaces button, #workspaces button:hover,
+#custom-browser, #custom-filemanager, #custom-exit,
+#disk, #memory, #cpu, #language, #custom-gpu,
+#battery, #battery.charging, #battery.plugged,
+#pulseaudio.muted,
+tooltip label {
+    color: @bar_fg;
+}
+
+#custom-appmenu,
+#clock,
+#bluetooth, #bluetooth.on, #bluetooth.connected,
+#pulseaudio,
+#network, #network.ethernet, #network.wifi,
+#workspaces button.active,
+#window {
+    color: @bar_fg;
+    background-color: @bar_bg;
+}
