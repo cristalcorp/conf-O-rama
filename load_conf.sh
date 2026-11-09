@@ -9,3 +9,4 @@ ln -sf $current_dir/zsh/zshrc ~/.zshrc
 ln -sfn $current_dir/oh-my-zsh ~/.oh-my-zsh
 # hypr: own repo, git clone git@github.com:cristalcorp/hypr.git ~/.config/hypr
 ln -sfn $current_dir/waybar ~/.config/waybar
+ln -sfn $current_dir/mpv ~/.config/mpv
