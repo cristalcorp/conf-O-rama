@@ -181,7 +181,7 @@ window#waybar.empty #window {
 }
 /* Lecteur en cours (mpris, D-017) : un peu d'air avant le Bluetooth */
 #mpris {
-    margin-right: 20px;
+    margin-left: 20px;
 }
 
 /* -----------------------------------------------------

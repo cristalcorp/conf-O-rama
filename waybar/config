@@ -34,8 +34,10 @@
 //        "group/quicklinks",
         //"hyprland/window"
   //  ],
+    "modules-left": [   // music player alone on the left (D-017)
+        "mpris"
+    ],
     "modules-right": [
-        "mpris",
         "bluetooth",
         "pulseaudio", 
         "network", 
