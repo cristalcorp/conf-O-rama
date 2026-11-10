@@ -173,6 +173,15 @@
         "format-icons": [" ", " ", " ", " ", " "]
     },
 
+    // Lecteur en cours (Qobuz/qbz, mpv, navigateur...) via MPRIS
+    "mpris": {
+        "format": "{status_icon} {dynamic}",
+        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "status-icons": { "playing": "▶", "paused": "⏸" },
+        "dynamic-order": ["artist", "title"],
+        "dynamic-len": 40
+    },
+
     // Pulseaudio
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
