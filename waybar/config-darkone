@@ -1,0 +1,7 @@
+// Laptop (darkone, D-019): same bar as the desktop, workspaces on the left
+// Values here override the included config (waybar(5): "the first defined value takes precedence").
+{
+    "include": ["~/.config/waybar/config"],
+    "modules-left":   ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["mpris"]
+}
