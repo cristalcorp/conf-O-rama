@@ -10,3 +10,7 @@ ln -sfn $current_dir/oh-my-zsh ~/.oh-my-zsh
 # hypr: own repo, git clone git@github.com:cristalcorp/hypr.git ~/.config/hypr
 ln -sfn $current_dir/waybar ~/.config/waybar
 ln -sfn $current_dir/mpv ~/.config/mpv
+# herdr: install with the official script (curl -fsSL https://herdr.dev/install.sh | sh),
+# then: herdr integration install claude ; herdr config check
+mkdir -p ~/.config/herdr
+ln -sf $current_dir/herdr/config.toml ~/.config/herdr/config.toml

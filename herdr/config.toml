@@ -1,0 +1,60 @@
+onboarding = false
+
+# Adapte depuis ~/.config/tmux/tmux.conf
+
+[theme]
+# tmux: plugin dreamsofcode-io/catppuccin-tmux
+name = "catppuccin"
+
+[terminal]
+# tmux: set-option -g default-shell /bin/zsh
+default_shell = "/bin/zsh"
+
+[ui]
+# tmux: set -g mouse on
+mouse_capture = true
+
+# tmux: set -s set-clipboard on (+ plugin tmux-plugins/tmux-yank)
+copy_on_select = true
+
+[keys]
+# tmux: unbind C-b / set -g prefix C-a / bind C-a send-prefix
+prefix = "ctrl+a"
+
+# tmux: plugin christoomey/vim-tmux-navigator -> Ctrl+h/j/k/l SANS prefix.
+# Attention: casse Ctrl+H (backspace), Ctrl+J (entree), Ctrl+K (kill-line) et
+# Ctrl+L (clear ecran) dans le shell et dans vim, sur tous les panes -- herdr
+# n'a pas la logique consciente de vim du plugin (pass-through en bordure de split).
+focus_pane_left = "ctrl+h"
+focus_pane_down = "ctrl+j"
+focus_pane_up = "ctrl+k"
+focus_pane_right = "ctrl+l"
+
+# tmux: bind "'" split-window -v -c "#{pane_current_path}" (pane empile, cwd preserve)
+#       bind '\' split-window -h -c "#{pane_current_path}" (pane cote a cote, cwd preserve)
+# herdr preserve toujours le cwd du pane courant au split, seules les touches sont remappees.
+# A verifier visuellement: swap si le sens est inverse chez herdr.
+split_horizontal = "prefix+'"
+split_vertical = "prefix+\\"
+
+# Workspaces : create / next / previous (prefix+shift+c/n/p).
+# Remplace le defaut new_workspace = prefix+shift+n, reutilise pour next.
+new_workspace = "prefix+shift+c"
+next_workspace = "prefix+shift+n"
+previous_workspace = "prefix+shift+p"
+
+# "exit" dans un pane ne ferme que ce pane. Pour tout quitter d'un coup
+# (equivalent a `tmux kill-session`), on shell-out vers `herdr session stop`
+# sur la session "default" (voir `herdr session list`). Ferme direct, sans
+# confirmation, et tue les process en cours dans les panes (agents inclus).
+[[keys.command]]
+key = "prefix+shift+q"
+type = "shell"
+command = "herdr session stop default"
+
+# coupe la notif sonore "claude attend votre input" (autres agents non impactes)
+[ui.sound.agents]
+claude = "off"
+
+[ui.sound]
+enabled = true
