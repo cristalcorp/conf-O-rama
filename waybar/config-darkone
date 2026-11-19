@@ -3,5 +3,13 @@
 {
     "include": ["~/.config/waybar/config"],
     "modules-left":   ["hyprland/workspaces", "hyprland/window"],
-    "modules-center": ["mpris"]
+    "modules-center": ["mpris"],
+    // Laptop: workspace numbers instead of icons (full module copied from modules.json, without format-icons)
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{id}",
+        "persistent-workspaces": { "*": [1, 2, 3, 4, 5, 6] }
+    }
 }
