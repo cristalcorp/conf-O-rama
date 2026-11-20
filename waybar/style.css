@@ -299,7 +299,7 @@ window#waybar.empty #window {
     font-size: 16px;
     color: @textcolor2;
     border-radius: 15px;
-    margin: 10px 15px 10px 0px;
+    margin: 10px 10px 10px 0px;
 }
 
 #battery.charging, #battery.plugged {
@@ -376,7 +376,6 @@ label:focus {
 #workspaces, #workspaces button, #workspaces button:hover,
 #custom-browser, #custom-filemanager, #custom-exit,
 #disk, #memory, #cpu, #language, #custom-gpu,
-#battery, #battery.charging, #battery.plugged,
 #pulseaudio.muted,
 tooltip label {
     color: @bar_fg;
@@ -387,6 +386,7 @@ tooltip label {
 #bluetooth, #bluetooth.on, #bluetooth.connected,
 #pulseaudio,
 #network, #network.ethernet, #network.wifi,
+#battery, #battery.charging, #battery.plugged,
 #workspaces button.active,
 #window {
     color: @bar_fg;
