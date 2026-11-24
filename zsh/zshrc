@@ -30,3 +30,14 @@ alias gvim="nvim --listen /tmp/godothost"
 
 source <(fzf --zsh)
 eval "$(starship init zsh)"
+
+# hstate: pull Hermes state before an interactive session.
+# Only for `hermes` alone or `hermes -p <profile>`; subcommands (dashboard, profile...) run directly.
+# If the pull fails (unpushed local changes, network), warn and start anyway.
+hermes() {
+  if [[ $# -eq 0 || ( $# -eq 2 && ( $1 == -p || $1 == --profile ) ) ]]; then
+    ~/.hermes/shared-skills/note-taking/hstate/scripts/hstate.sh pull \
+      || print -P "%F{yellow}hstate pull non fait : session lancée sur l'état local%f"
+  fi
+  command hermes "$@"
+}
