@@ -33,11 +33,29 @@ eval "$(starship init zsh)"
 
 # hstate: pull Hermes state before an interactive session.
 # Only for `hermes` alone or `hermes -p <profile>`; subcommands (dashboard, profile...) run directly.
-# If the pull fails (unpushed local changes, network), warn and start anyway.
+# The pull is interactive (push / merge / keep GitHub / launch / quit). Exit 4 = user chose quit.
+# Any other failure: ask before launching on the local state.
 hermes() {
   if [[ $# -eq 0 || ( $# -eq 2 && ( $1 == -p || $1 == --profile ) ) ]]; then
-    ~/.hermes/shared-skills/note-taking/hstate/scripts/hstate.sh pull \
-      || print -P "%F{yellow}hstate pull non fait : session lancée sur l'état local%f"
+    ~/.hermes/shared-skills/note-taking/hstate/scripts/hstate.sh pull
+    local rc=$?
+    (( rc == 4 )) && return 0
+    if (( rc != 0 )); then
+      print -P "%F{red}hstate pull en échec (code $rc).%f"
+      local a; read -k1 "a?Lancer Hermes sur l'état local ? [o/N] "; echo
+      [[ $a == [oOyY] ]] || return $rc
+    fi
   fi
   command hermes "$@"
 }
+
+# Hermes Agent command
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac
+
+
+# bun completions
+[ -s "/home/cristal/.bun/_bun" ] && source "/home/cristal/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
